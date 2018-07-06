@@ -1,7 +1,7 @@
 /*!
-   evolutility-ui-jquery 1.2.2 
-   (c) 2017 Olivier Giulieri 
-   http://evoluteur.github.io/evolutility-ui-jquery/  
+   evolutility-ui-jquery 1.2.2
+   (c) 2017 Olivier Giulieri
+   http://evoluteur.github.io/evolutility-ui-jquery/
 */
 // default config for Evolutility-UI-jQuery
 
@@ -129,7 +129,7 @@ Evol.i18n = {
     range: '{0} - {1} of {2} {3}', //rangeBegin, '-', rangeEnd, ' of ', mSize, ' ', entities'
     selected: '{0} selected',
     //},
-    
+
     // --- status ---
     msg:{
         sgn_money: '$', // indicator for money
@@ -311,7 +311,7 @@ return {
     isViewMany: function(viewName){
         return this.isViewCollection(viewName) || this.isViewCharts(viewName);
     },
-    
+
     isViewCollection: function(viewName){
         return viewName==='list' || viewName==='cards';
     },
@@ -1029,7 +1029,7 @@ Evol.DOM = {
 
 Evol.DOM.Charts = {
 
-    // same as d3.scale.category10() 
+    // same as d3.scale.category10()
     colors:['1f77b4','ff7f0e','2ca02c','d62728','9467bd','8c564b','e377c2','7f7f7f','bcbd22','17becf'],
 
     _colorsList: function(nbColors){
@@ -1464,7 +1464,7 @@ return {
                     break;
                 case 'date':
                 case 'datetime':
-                case 'time': 
+                case 'time':
                     sql+='date';
                     break;
                 default:
@@ -1698,7 +1698,7 @@ Evol.ViewMany = {
         {id:'edit', type:null, icon:'edit'},
         {id:'delete',type: null, icon:'trash'}
     ],
-    
+
     eventsMany: {
         'click .pagination>li': 'click_pagination',
         //'click .evol-field-label .glyphicon-wrench': 'click_customize',
@@ -2176,17 +2176,17 @@ Bubbles.prototype.setData = function(data){
   this.nodes.enter().append("circle")
     .attr("class", "node")
     .attr('data-mid', function (d) { return d.id;})
-    .attr("cx", function (d) { 
+    .attr("cx", function (d) {
       return d.x;
     })
-    .attr("cy", function (d) { 
-      return d.y; 
+    .attr("cy", function (d) {
+      return d.y;
     })
-    .attr("r", function (d) { 
-      return d.radius; 
+    .attr("r", function (d) {
+      return d.radius;
     })
-    .style("fill", function (d) { 
-      return that.fill(d[that.colorFieldId]); 
+    .style("fill", function (d) {
+      return that.fill(d[that.colorFieldId]);
     })
     .on("mouseenter", showPopover)
     .on("mouseleave", removePopovers)
@@ -2194,17 +2194,17 @@ Bubbles.prototype.setData = function(data){
 
   this.nodes
     .attr('data-mid', function (d) { return d.id;})
-    .attr("cx", function (d) { 
+    .attr("cx", function (d) {
       return d.x;
     })
-    .attr("cy", function (d) { 
-      return d.y; 
+    .attr("cy", function (d) {
+      return d.y;
     })
-    .attr("r", function (d) { 
-      return d.radius; 
+    .attr("r", function (d) {
+      return d.radius;
     })
-    .style("fill", function (d) { 
-      return that.fill(d[that.colorFieldId]); 
+    .style("fill", function (d) {
+      return that.fill(d[that.colorFieldId]);
     });
 
 
@@ -2217,7 +2217,7 @@ Bubbles.prototype.setData = function(data){
   function removePopovers () {
     $('.popover').each(function() {
       $(this).remove();
-    }); 
+    });
   }
 
   function showPopover (d) {
@@ -2241,7 +2241,7 @@ Bubbles.prototype.setData = function(data){
 
 Bubbles.prototype.getCenters = function (fId, size, data) {
   var f=this.fieldsH[fId],
-      centers, 
+      centers,
       map,
       na='N/A';
 
@@ -2359,7 +2359,7 @@ Bubbles.prototype.labels = function(centers) {
     .data(centers)
     .enter().append("text")
       .attr("class", "label")
-      .text(function (d) { 
+      .text(function (d) {
         return d.label || d.name ;
       })
       .attr("transform", function (d) {
@@ -2440,8 +2440,8 @@ Evol.ViewMany.Bubbles = Evol.View_Many.extend({
             this.bubbles = new Evol.Bubbles({
                 //selector:'.evol-bubbles-body',
                 elem: this.$('.evol-bubbles-body').get(0),
-                width:1200, 
-                height:700, 
+                width:1200,
+                height:700,
                 fields: flds,
                 colorFieldId: fd,
                 groupFieldId: fd,
@@ -2626,7 +2626,7 @@ Evol.ViewMany.Cards = Evol.View_Many.extend({
                 v = domInput.colorBox(f.id, v, v);
             }else if(f.type==='formula'){
                 v = domInput.formula(null, f, model);
-            }else if(f.type==='image' && !isTooltip){ 
+            }else if(f.type==='image' && !isTooltip){
                 v = '<a href="#'+route+model.id+'">'+
                     that._HTMLField(f, model.escape(f.attribute || f.id))+
                     '</a>';
@@ -2685,20 +2685,20 @@ Evol.ViewMany.Cards = Evol.View_Many.extend({
     enterItem: Evol.ViewMany.actionEvents.enterItem(Evol.ViewMany.menuOne),
 
     leaveItem: Evol.ViewMany.actionEvents.leaveItem,
-    
+
     clickAction: function(evt){
         var that = this,
             e = $(evt.currentTarget),
             aid = e.data('id'),
             id = e.parent().siblings().eq(0).data('mid'),
             p = e.closest('.panel');
-        
+
         if(aid==='edit'){
             this.$el.trigger('navigate', {id: id, view: aid});
         }else{
             this.$el.trigger('action', {
-                id: aid, 
-                mid: id, 
+                id: aid,
+                mid: id,
                 title: Evol.Dico.getItemTitle(p),
                 skipWarning: evt.shiftKey,
                 fnSuccess: function(escape){
@@ -3015,7 +3015,7 @@ Evol.ViewMany.List = Evol.View_Many.extend({
     },
 
     enterItem: Evol.ViewMany.actionEvents.enterItem(
-        Evol.ViewMany.menuOne, 
+        Evol.ViewMany.menuOne,
         function(e){
             return e.children().eq(0);
         },
@@ -3023,7 +3023,7 @@ Evol.ViewMany.List = Evol.View_Many.extend({
     ),
 
     leaveItem: Evol.ViewMany.actionEvents.leaveItem,
-    
+
     clickAction: function(evt){
         var that=this,
             e=$(evt.currentTarget),
@@ -3035,8 +3035,8 @@ Evol.ViewMany.List = Evol.View_Many.extend({
             this.$el.trigger('navigate', {id: id, view: aid});
         }else{
             this.$el.trigger('action', {
-                id: aid, 
-                mid: id, 
+                id: aid,
+                mid: id,
                 title: e.closest('tr').find('a>span').text(),
                 skipWarning: evt.shiftKey,
                 fnSuccess: function(escape){
@@ -3707,7 +3707,7 @@ return Backbone.View.extend({
         h.push('<div style="width:'+p.width+'%" class="evol-pnl" data-pid="'+p.id+'">',
             dom.panelBegin(p, this.style, true),
             '<div class="evo-plist"><table class="table" data-mid="'+(p.attribute || p.id)+'"><thead><tr>');
-        
+
         if(_.isArray(p.elements)){
             _.each(p.elements, function (elem) {
                 _th(h, elem);
@@ -4426,7 +4426,7 @@ Evol.ViewOne.JSON = Evol.View_One.extend({
 
             h.push(dom.panelBegin({
                     id: 'p-json',
-                    label:Evol.Format.capitalize(this.uiModel.name), 
+                    label:Evol.Format.capitalize(this.uiModel.name),
                     label2: 'JSON'
                 }, this.style+' evo-p-json', true)+
                 '<fieldset>'+
@@ -4535,7 +4535,7 @@ return Evol.ViewOne.Edit.extend({
             width: 100,
             elements: this.getFields()
         };
-        
+
         this._renderPanel(h, miniUIModel, mode);
         this._renderButtons(h, mode);
     },
@@ -4543,7 +4543,7 @@ return Evol.ViewOne.Edit.extend({
     _renderPanel: function (h, p, mode, visible) {
         var that = this,
             iconsPath = this.iconsPath;
-            
+
         h.push('<div data-p-width="100%" class="evol-pnl evol-p-mini">'+
             dom.panelBegin(p, this.style, true)+
             '<fieldset data-pid="'+p.id+(p.readonly?'" disabled>':'">'));
@@ -4692,7 +4692,7 @@ return Backbone.View.extend({
                     };
                 });
         h+='<div class="evol-xptf"><div class="evol-xpt-format-hld"><label for="'+fId+'">'+i18nXpt.format+'</label>'+
-            uiInput.select(fId, '', 'evol-xpt-format', false, formatsList)+'</div>'; 
+            uiInput.select(fId, '', 'evol-xpt-format', false, formatsList)+'</div>';
         h+='<div class="top-btn-xpt">'+btnExport+'</div>';
         h+=exportOptions('xptFLH')+
             //---- Preview -----------------------------
@@ -5505,7 +5505,7 @@ return Backbone.View.extend({
                             }
                             h+=fOption(fOps.sGreater, evoLang.sAfter)+
                                 fOption(fOps.sSmaller, evoLang.sBefore);//+
-                                //fOption(fOps.sBetween, evoLang.sBetween 
+                                //fOption(fOps.sBetween, evoLang.sBetween
                             break;
                         case fts.int:
                         case fts.dec:
@@ -6020,7 +6020,7 @@ return Backbone.View.extend({
             return item;
         }
         var sample=[
-                sampleItem(0), 
+                sampleItem(0),
                 sampleItem(1)
             ],
             h='';
@@ -6756,6 +6756,7 @@ return Backbone.View.extend({
                 // TODO fix bug w/ insert when filter applied => dup record
                 var updatedModel = this.getData(true);
                 this.model.set(updatedModel);
+                this.setView('browse',true);
                 this.model.save(this.model.changedAttributes(), {
                     success: function(m){
                         fnSuccess(m);
@@ -7137,7 +7138,7 @@ return Backbone.View.extend({
         this.updateNav();
         this._trigger('filter.change');
     },
-    
+
     click_search: function(evt){
         var that=this,
             vSearch=this.$('.evo-search>input').val().toLowerCase(),
